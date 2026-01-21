@@ -1,0 +1,49 @@
+Metadata-Version: 2.4
+Name: react-agent
+Version: 0.1.0
+Summary: A lightweight ReAct-based AI agent framework with tool use and verbose execution
+Author: Your Name
+License: MIT
+Project-URL: Homepage, https://github.com/yourname/react-agent
+Project-URL: Repository, https://github.com/yourname/react-agent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pydantic>=2.0
+Requires-Dist: openai>=1.0
+Dynamic: license-file
+
+# React Agent
+
+A Python framework for building agent systems with reasoning (ReAct pattern).
+
+## Features
+
+- ReAct (Reasoning + Acting) agent framework
+- Tool registry and management
+- Multiple LLM support (OpenAI, etc.)
+- Memory management
+- Verbose logging and debugging
+
+## Installation
+
+```bash
+pip install react-agent
+```
+
+## Quick Start
+
+```python
+from react_agent.core import ReactAgent
+
+agent = ReactAgent()
+# Use the agent...
+```
+
+## Documentation
+
+For more information, see the [documentation](docs/) and [examples](examples/).
+
+## License
+
+MIT License - see LICENSE file for details
