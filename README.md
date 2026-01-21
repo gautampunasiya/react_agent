@@ -17,7 +17,7 @@ pip install react-agent
 ```
 or
 ```bash
-pip install git+https://github.com/yourname/react-agent.git
+pip install git+https://github.com/yourname/react_agent.git
 ```
 
 ## Quick Start
