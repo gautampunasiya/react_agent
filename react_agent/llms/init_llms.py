@@ -1,7 +1,6 @@
 from .base import LLM
 from openai import AsyncOpenAI
-import google.generativeai as genai
-
+from google import genai
 
 class OpenAILLM(LLM):
     def __init__(
@@ -36,17 +35,17 @@ class GeminiLLM(LLM):
         temperature: float = 0.0,
         max_tokens: int = 512,
     ):
-        genai.configure(api_key=api_key)
-
-        self.model_name = model
+        self.client = genai.Client(api_key=api_key)
+        self.model = model
         self.temperature = temperature
-        self.model = genai.GenerativeModel(model)
 
     async def generate(self, messages: list[dict]) -> str:
         prompt = self._convert_messages_to_prompt(messages)
-        response = self.model.generate_content(
-            prompt,
-            generation_config={
+
+        response = self.client.models.generate_content(
+            model=self.model,
+            contents=prompt,
+            config={
                 "temperature": self.temperature,
             },
         )
@@ -54,17 +53,9 @@ class GeminiLLM(LLM):
         return response.text.strip()
 
     def _convert_messages_to_prompt(self, messages):
-        prompt_parts = []
-
+        parts = []
         for msg in messages:
-            role = msg["role"]
+            role = msg["role"].upper()
             content = msg["content"]
-
-            if role == "system":
-                prompt_parts.append(f"[SYSTEM]\n{content}")
-            elif role == "user":
-                prompt_parts.append(f"[USER]\n{content}")
-            elif role == "assistant":
-                prompt_parts.append(f"[ASSISTANT]\n{content}")
-
-        return "\n\n".join(prompt_parts)
+            parts.append(f"[{role}]\n{content}")
+        return "\n\n".join(parts)
