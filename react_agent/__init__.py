@@ -6,6 +6,7 @@ from react_agent.tools.registry import ToolRegistry
 from react_agent.tools.calculator import CalculatorTool
 
 from react_agent.llms.init_llms import OpenAILLM
+from react_agent.llms.init_llms import GeminiLLM
 
 __all__ = [
     "ReactAgent",
