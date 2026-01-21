@@ -5,7 +5,7 @@ from react_agent.tools.base import Tool
 from react_agent.tools.registry import ToolRegistry
 from react_agent.tools.calculator import CalculatorTool
 
-from react_agent.llms.openai_llm import OpenAILLM
+from react_agent.llms.init_llms import OpenAILLM
 
 __all__ = [
     "ReactAgent",
@@ -14,4 +14,5 @@ __all__ = [
     "ToolRegistry",
     "CalculatorTool",
     "OpenAILLM",
+    "GeminiLLM",
 ]

@@ -6,7 +6,7 @@ A Python framework for building agent systems with reasoning (ReAct pattern).
 
 - ReAct (Reasoning + Acting) agent framework
 - Tool registry and management
-- Multiple LLM support (OpenAI, etc.)
+- Multiple LLM support (OpenAI, Gemeni)
 - Memory management
 - Verbose logging and debugging
 

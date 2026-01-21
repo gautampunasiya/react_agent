@@ -1,6 +1,7 @@
 class ToolRegistry:
     def __init__(self, tools=None):
         self._tools = {}
+        self.tools = tools
         if tools:
             for tool in tools:
                 self.register(tool)
@@ -18,6 +19,8 @@ class ToolRegistry:
         """
         Used to inject tool info into the LLM prompt
         """
+        if self.tools is None:
+            return ["No tools available."]
         lines = []
         for tool in self._tools.values():
             schema = tool.input_schema.model_json_schema()

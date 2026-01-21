@@ -10,7 +10,7 @@ class Agent:
         self.memory = memory
 
 class ReactAgent(Agent):
-    def __init__(self, llm, tools, memory, max_steps=10,verbose=False):
+    def __init__(self, llm, tools=None, memory=None, max_steps=10,verbose=False):
         super().__init__(llm, tools, memory)
         self.max_steps = max_steps
         self.verbose_logger = VerboseLogger(verbose)
@@ -24,7 +24,7 @@ class ReactAgent(Agent):
             
             prompt = build_react_prompt(
                 tools=self.tools.describe_for_prompt(),
-                tool_names=", ".join(self.tools._tools.keys()),
+                tool_names=", ".join(self.tools._tools.keys())if self.tools._tools else "none",
                 user_input=user_input,
                 agent_scratchpad=agent_scratchpad
                 )

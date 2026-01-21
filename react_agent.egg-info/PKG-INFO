@@ -4,8 +4,8 @@ Version: 0.1.0
 Summary: A lightweight ReAct-based AI agent framework with tool use and verbose execution
 Author: Your Name
 License: MIT
-Project-URL: Homepage, https://github.com/yourname/react-agent
-Project-URL: Repository, https://github.com/yourname/react-agent
+Project-URL: Homepage, https://github.com/gautampunasiya/react-agent
+Project-URL: Repository, https://github.com/gautampunasiya/react-agent
 Requires-Python: >=3.9
 Description-Content-Type: text/markdown
 License-File: LICENSE
@@ -29,6 +29,10 @@ A Python framework for building agent systems with reasoning (ReAct pattern).
 
 ```bash
 pip install react-agent
+```
+or
+```bash
+pip install git+https://github.com/yourname/react-agent.git
 ```
 
 ## Quick Start
