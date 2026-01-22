@@ -12,10 +12,7 @@ A Python framework for building agent systems with reasoning (ReAct pattern).
 
 ## Installation
 
-```bash
-pip install react-agent
-```
-or
+
 ```bash
 pip install git+https://github.com/gautampunasiya/react_agent.git
 ```
@@ -23,9 +20,33 @@ pip install git+https://github.com/gautampunasiya/react_agent.git
 ## Quick Start
 
 ```python
-from react_agent.core import ReactAgent
+import asyncio
+from react_agent.llms.init_llms import OpenAILLM, GeminiLLM
+from react_agent.core.react_agent import ReactAgent
+from react_agent.tools.calculator import CalculatorTool
+from react_agent.core.memory import Memory
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-agent = ReactAgent()
+import nest_asyncio
+nest_asyncio.apply()
+
+llm=GeminiLLM(
+            api_key=os.getenv("GOOGLE_API_KEY"),
+            model=os.getenv("GOOGLE_GEMINI_MODEL"),
+        )
+
+async def main():
+    agent = ReactAgent(
+        llm=llm,
+        tools=[CalculatorTool()],
+        memory=Memory(),
+        verbose=True
+    )
+
+    result = await agent.run("what is 37 multiplied by 24?")
+asyncio.run(main())
 # Use the agent...
 ```
 
