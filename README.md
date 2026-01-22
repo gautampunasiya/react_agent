@@ -24,6 +24,7 @@ import asyncio
 from react_agent.llms.init_llms import OpenAILLM, GeminiLLM
 from react_agent.core.react_agent import ReactAgent
 from react_agent.tools.calculator import CalculatorTool
+from react_agent.tools.web_search import SearchTool
 from react_agent.core.memory import Memory
 import os
 from dotenv import load_dotenv
@@ -40,7 +41,7 @@ llm=GeminiLLM(
 async def main():
     agent = ReactAgent(
         llm=llm,
-        tools=[CalculatorTool()],
+        tools=[CalculatorTool(), SearchTool('Tavily_API_Key')],
         memory=Memory(),
         verbose=True
     )
