@@ -42,7 +42,10 @@ class ReactAgent(Agent):
 
             tool = self.tools.get(parsed["tool"])
             if not tool:
-                raise Exception("Unknown tool")
+                raise RuntimeError(
+                    f"Tool '{parsed['tool']}' not found. "
+                    f"Available tools: {list(self.tools._tools.keys())}"
+                )
             
             self.verbose_logger.log(
                 f"Action: {parsed['tool']}\n"
